@@ -1,0 +1,52 @@
+openapi: 3.0.3
+info:
+  title: Greeting API
+  version: 0.1.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /greetings/random:
+    get:
+      operationId: getRandomGreeting
+      summary: Get a random greeting
+      responses:
+        '200':
+          description: Random greeting
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GreetingResponse'
+  /greetings:
+    post:
+      operationId: createGreeting
+      summary: Create a greeting for a name
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGreetingRequest'
+      responses:
+        '200':
+          description: Greeting for the provided name
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GreetingResponse'
+components:
+  schemas:
+    CreateGreetingRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          minLength: 1
+    GreetingResponse:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string

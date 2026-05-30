@@ -1,1 +1,25 @@
 .serena/
+
+# Binaries and build output
+bin/
+dist/
+build/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Go test and coverage output
+*.test
+*.prof
+coverage.out
+coverage.html
+
+# Local environment
+.env
+.env.*
+
+# Temporary files
+tmp/
+temp/
